@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atlas ABM — Men's Health Clinic Intel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="mesh"></div>
+    <main class="app-shell">
+      <header class="card hero">
+        <div>
+          <p class="eyebrow">Account-Based Marketing Intelligence</p>
+          <h1>Atlas ABM — Men’s Health Clinic Prospecting Engine</h1>
+          <p class="subtitle">
+            Find clinics in affluent U.S. markets, verify active ad spend, enrich owner/director/manager contacts,
+            and prioritize outreach using transparent lead scoring.
+          </p>
+        </div>
+        <button id="scanBtn" class="btn primary">Run Scan</button>
+      </header>
+
+      <section class="layout">
+        <aside class="card panel">
+          <h2>Scan Controls</h2>
+          <label>Affluent City Segment
+            <select id="cityTier">
+              <option value="tier1">Tier 1 (Top 25 household income metros)</option>
+              <option value="tier2">Tier 2 (Top 50)</option>
+              <option value="all">All mapped affluent cities</option>
+            </select>
+          </label>
+          <label>Clinic Service Focus
+            <select id="focusFilter">
+              <option value="all">All Men’s Health Services</option>
+              <option value="hormone">Hormone / TRT</option>
+              <option value="sexual-health">Sexual Health</option>
+              <option value="weight-loss">Weight Loss / Metabolic</option>
+            </select>
+          </label>
+          <label>Ad Verification Requirement
+            <select id="adPlatformFilter">
+              <option value="any">Any paid-media proof</option>
+              <option value="google-meta">Google + Meta verified</option>
+              <option value="google">Google verified</option>
+              <option value="meta">Meta verified</option>
+            </select>
+          </label>
+          <label>Minimum Lead Score
+            <input id="minScore" type="number" min="0" max="100" value="65" />
+          </label>
+          <label>Minimum Data Confidence (%)
+            <input id="minConfidence" type="number" min="0" max="100" value="70" />
+          </label>
+
+          <div class="stack">
+            <h3>Provider Integrations (Blueprint)</h3>
+            <p class="hint">
+              Current demo uses seeded records. In production, connect Places/Directory APIs, Google Ads Transparency,
+              Meta Ad Library, and contact enrichment providers.
+            </p>
+          </div>
+        </aside>
+
+        <section class="content">
+          <div class="kpi-grid">
+            <article class="card kpi"><p>Clinics Matched</p><h3 id="kpiClinics">0</h3></article>
+            <article class="card kpi"><p>Ad Verified</p><h3 id="kpiAd">0</h3></article>
+            <article class="card kpi"><p>Decision Makers</p><h3 id="kpiDm">0</h3></article>
+            <article class="card kpi"><p>Avg Lead Score</p><h3 id="kpiScore">0</h3></article>
+            <article class="card kpi"><p>Avg Confidence</p><h3 id="kpiConfidence">0%</h3></article>
+          </div>
+
+          <section class="card table-card">
+            <div class="table-head">
+              <h2>Clinic Intelligence Board</h2>
+              <button id="exportBtn" class="btn">Export CSV</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Clinic</th>
+                    <th>Address + Phone</th>
+                    <th>Ad Evidence</th>
+                    <th>Decision Makers</th>
+                    <th>Best Contact Strategy</th>
+                    <th>Score Breakdown</th>
+                    <th>Lead Score</th>
+                    <th>Confidence</th>
+                  </tr>
+                </thead>
+                <tbody id="clinicTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <template id="personTemplate">
+      <div class="person">
+        <strong class="name"></strong>
+        <span class="role"></span>
+        <a class="contact" target="_blank" rel="noreferrer">Contact</a>
+      </div>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
